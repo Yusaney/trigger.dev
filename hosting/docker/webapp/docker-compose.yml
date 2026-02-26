@@ -68,6 +68,7 @@ services:
       TRIGGER_BOOTSTRAP_WORKER_GROUP_NAME: bootstrap
       TRIGGER_BOOTSTRAP_WORKER_TOKEN_PATH: /home/node/shared/worker_token
       # ClickHouse configuration
+      SKIP_CLICKHOUSE_MIGRATIONS: 1
       CLICKHOUSE_URL: ${CLICKHOUSE_URL:-http://default:password@clickhouse:8123}
       CLICKHOUSE_LOG_LEVEL: ${CLICKHOUSE_LOG_LEVEL:-info}
       # Run replication
@@ -152,7 +153,6 @@ services:
       - ${CLICKHOUSE_PUBLISH_IP:-127.0.0.1}:9123:8123
       - ${CLICKHOUSE_PUBLISH_IP:-127.0.0.1}:9090:9000
     environment:
-      SKIP_CLICKHOUSE_MIGRATIONS: 1
       CLICKHOUSE_ADMIN_USER: ${CLICKHOUSE_USER:-default}
       CLICKHOUSE_ADMIN_PASSWORD: ${CLICKHOUSE_PASSWORD:-password}
     volumes:
